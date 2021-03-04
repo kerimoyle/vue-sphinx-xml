@@ -1,9 +1,9 @@
 <template>
   <router-link v-if="isInternalReference()" :to="routeDescription">
-    {{ element.textContent }}
+    [{{ element.textContent }}]
   </router-link>
   <a v-else :href="element.getAttribute('refuri')" target="_blank">
-    {{ element.textContent }}
+    [{{ element.textContent }}]
   </a>
 </template>
 
@@ -11,7 +11,7 @@
 import { baseReference } from '../../mixins/BaseReference'
 
 export default {
-  name: 'Reference',
+  name: 'FootnoteReference',
   mixins: [baseReference],
 }
 </script>

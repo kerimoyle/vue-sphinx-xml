@@ -1,5 +1,5 @@
 <script>
-import { sphinxChildren } from '@/mixins/SphinxChildren'
+import { sphinxChildren } from '../../mixins/SphinxChildren'
 
 export default {
   name: 'Figure',
@@ -7,11 +7,8 @@ export default {
   render(h) {
     return h(
       'figure', // tag name
-      {
-        attrs: this.defineAttrs,
-        class: this.classes,
-      },
-      this.children.map(child => h(child)),
+      this.dataObject(this.classes),
+      this.children.map(child => h(child, {attrs: this.attrs})),
     )
   },
   props: {
@@ -32,15 +29,16 @@ export default {
       })
       return classes
     },
-    defineAttrs() {
-      const ids = this.element.getAttribute('ids').split(' ')
-      const id = ids[0]
-      return {
-        id,
-      }
+    attrs() {
+      const unrequiredAttrs = ['uri', 'ids', 'names', 'candidates']
+      let attrDict = {}
+      this.element.attributes.forEach((attr) => {
+        if (!unrequiredAttrs.includes(attr.name)) {
+          attrDict[attr.name] = attr.value
+        }
+      })
+      return attrDict
     },
   },
 }
 </script>
-
-<style scoped></style>

@@ -2,20 +2,12 @@
 import { sphinxChildren } from '../../mixins/SphinxChildren'
 
 export default {
-  name: 'Document',
-  props: {
-    element: { type: Element, required: true },
-    id: { type: String },
-  },
+  name: 'Footnote',
   mixins: [sphinxChildren],
-  render: function(h) {
+  render(h) {
     return h(
       'div', // tag name
-      {
-        attrs: {
-          id: this.id,
-        },
-      }, // options
+      this.dataObject(['footnote']),
       this.children.map(child => h(child)), // array of children
     )
   },

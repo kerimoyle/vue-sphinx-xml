@@ -1,16 +1,12 @@
 export const baseDiv = {
-  props: {
-    element: {
-      type: Element,
-    },
-  },
-
   computed: {
     classes() {
-      return [
-        this.$options.name.toLowerCase(),
-        ...this.element.getAttribute('classes').split(' '),
-      ]
+      let classesString = this.element.getAttribute('classes')
+      let classes = []
+      if (classesString) {
+        classes = classesString.split(' ')
+      }
+      return [this.$options.name.toLowerCase(), ...classes]
     },
   },
 

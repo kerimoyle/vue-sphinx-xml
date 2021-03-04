@@ -1,27 +1,14 @@
-export const renderBulletList = element => {
+export const renderDirectElementMap = (element, tagName) => {
   return {
     components: {
-      BulletList: () => import('@/components/templates/BulletList'),
+      DirectElementMap: () =>
+        import('../components/templates/DirectElementMap'),
     },
     render(h) {
-      return h('BulletList', {
+      return h('DirectElementMap', {
         props: {
-          element: element,
-        },
-      })
-    },
-  }
-}
-
-export const renderEnumeratedList = element => {
-  return {
-    components: {
-      EnumeratedList: () => import('@/components/templates/EnumeratedList'),
-    },
-    render(h) {
-      return h('EnumeratedList', {
-        props: {
-          element: element,
+          element,
+          tagName,
         },
       })
     },
@@ -31,7 +18,7 @@ export const renderEnumeratedList = element => {
 export const renderSection = (element, level, extraIds) => {
   return {
     components: {
-      Section: () => import('@/components/templates/Section'),
+      Section: () => import('../components/templates/Section'),
     },
     render(h) {
       return h('Section', {
@@ -48,7 +35,7 @@ export const renderSection = (element, level, extraIds) => {
 export const renderTitle = (element, level, isTopic) => {
   return {
     components: {
-      Title: () => import('@/components/templates/Title'),
+      Title: () => import('../components/templates/Title'),
     },
     render(h) {
       return h(
@@ -85,25 +72,10 @@ export const renderTransition = () => {
   }
 }
 
-export const renderInline = element => {
-  return {
-    components: {
-      Inline: () => import('@/components/templates/Inline'),
-    },
-    render(h) {
-      return h('Inline', {
-        props: {
-          element,
-        },
-      })
-    },
-  }
-}
-
 export const renderMath = element => {
   return {
     components: {
-      Math: () => import('@/components/templates/Math'),
+      Math: () => import('../components/templates/Math'),
     },
     render(h) {
       return h('Math', {
@@ -115,13 +87,13 @@ export const renderMath = element => {
   }
 }
 
-export const renderTitleReference = element => {
+export const renderLineSingle = element => {
   return {
     components: {
-      TitleReference: () => import('@/components/templates/TitleReference'),
+      LineSingle: () => import('../components/templates/LineSingle'),
     },
     render(h) {
-      return h('TitleReference', {
+      return h('LineSingle', {
         props: {
           element,
         },
@@ -130,13 +102,13 @@ export const renderTitleReference = element => {
   }
 }
 
-export const renderEmphasis = element => {
+export const renderLineBlock = element => {
   return {
     components: {
-      Emphasis: () => import('@/components/templates/Emphasis'),
+      LineBlock: () => import('../components/templates/LineBlock'),
     },
     render(h) {
-      return h('Emphasis', {
+      return h('LineBlock', {
         props: {
           element,
         },
@@ -148,7 +120,7 @@ export const renderEmphasis = element => {
 export const renderLiteralBlock = element => {
   return {
     components: {
-      LiteralBlock: () => import('@/components/templates/LiteralBlock'),
+      LiteralBlock: () => import('../components/templates/LiteralBlock'),
     },
     render(h) {
       return h('LiteralBlock', {
@@ -163,7 +135,7 @@ export const renderLiteralBlock = element => {
 export const renderLiteral = element => {
   return {
     components: {
-      Literal: () => import('@/components/templates/Literal'),
+      Literal: () => import('../components/templates/Literal'),
     },
     render(h) {
       return h('Literal', {
@@ -175,25 +147,10 @@ export const renderLiteral = element => {
   }
 }
 
-export const renderStrong = element => {
-  return {
-    components: {
-      Strong: () => import('@/components/templates/Strong'),
-    },
-    render(h) {
-      return h('Strong', {
-        props: {
-          element,
-        },
-      })
-    },
-  }
-}
-
 export const renderMathBlock = element => {
   return {
     components: {
-      MathBlock: () => import('@/components/templates/MathBlock'),
+      MathBlock: () => import('../components/templates/MathBlock'),
     },
     render(h) {
       return h('MathBlock', {
@@ -205,25 +162,10 @@ export const renderMathBlock = element => {
   }
 }
 
-export const renderParagraph = element => {
-  return {
-    components: {
-      Paragraph: () => import('@/components/templates/Paragraph'),
-    },
-    render(h) {
-      return h('Paragraph', {
-        props: {
-          element,
-        },
-      })
-    },
-  }
-}
-
 export const renderProblematic = element => {
   return {
     components: {
-      Problematic: () => import('@/components/templates/Problematic'),
+      Problematic: () => import('../components/templates/Problematic'),
     },
     render(h) {
       return h('Problematic', {
@@ -238,7 +180,7 @@ export const renderProblematic = element => {
 export const renderTodoNode = element => {
   return {
     components: {
-      TodoNode: () => import('@/components/templates/TodoNode'),
+      TodoNode: () => import('../components/templates/TodoNode'),
     },
     render(h) {
       return h('TodoNode', {
@@ -253,10 +195,56 @@ export const renderTodoNode = element => {
 export const renderReference = element => {
   return {
     components: {
-      Reference: () => import('@/components/templates/Reference'),
+      Reference: () => import('../components/templates/Reference'),
     },
     render(h) {
       return h('Reference', {
+        props: {
+          element,
+        },
+      })
+    },
+  }
+}
+
+export const renderNumberReference = element => {
+  return {
+    components: {
+      NumberReference: () => import('../components/templates/NumberReference'),
+    },
+    render(h) {
+      return h('NumberReference', {
+        props: {
+          element,
+        },
+      })
+    },
+  }
+}
+
+export const renderFootnoteReference = element => {
+  return {
+    components: {
+      FootnoteReference: () =>
+        import('../components/templates/FootnoteReference'),
+    },
+    render(h) {
+      return h('FootnoteReference', {
+        props: {
+          element,
+        },
+      })
+    },
+  }
+}
+
+export const renderFootnote = element => {
+  return {
+    components: {
+      Footnote: () => import('../components/templates/Footnote'),
+    },
+    render(h) {
+      return h('Footnote', {
         props: {
           element,
         },
@@ -269,7 +257,7 @@ export const renderDownloadReference = element => {
   return {
     components: {
       DownloadReference: () =>
-        import('@/components/templates/DownloadReference'),
+        import('../components/templates/DownloadReference'),
     },
     render(h) {
       return h('DownloadReference', {
@@ -284,7 +272,7 @@ export const renderDownloadReference = element => {
 export const renderFigure = element => {
   return {
     components: {
-      Figure: () => import('@/components/templates/Figure'),
+      Figure: () => import('../components/templates/Figure'),
     },
     render(h) {
       return h('Figure', {
@@ -299,7 +287,7 @@ export const renderFigure = element => {
 export const renderImage = element => {
   return {
     components: {
-      SphinxImage: () => import('@/components/templates/Image'),
+      SphinxImage: () => import('../components/templates/Image'),
     },
     render(h) {
       return h('SphinxImage', {
@@ -311,40 +299,10 @@ export const renderImage = element => {
   }
 }
 
-export const renderCaption = element => {
-  return {
-    components: {
-      Caption: () => import('@/components/templates/Caption'),
-    },
-    render(h) {
-      return h('Caption', {
-        props: {
-          element,
-        },
-      })
-    },
-  }
-}
-
-export const renderListItem = element => {
-  return {
-    components: {
-      ListItem: () => import('@/components/templates/ListItem'),
-    },
-    render(h) {
-      return h('ListItem', {
-        props: {
-          element: element,
-        },
-      })
-    },
-  }
-}
-
 export const renderCompound = element => {
   return {
     components: {
-      Compound: () => import('@/components/templates/Compound'),
+      Compound: () => import('../components/templates/Compound'),
     },
     render(h) {
       return h('Compound', {
@@ -359,7 +317,7 @@ export const renderCompound = element => {
 export const renderContainer = element => {
   return {
     components: {
-      Container: () => import('@/components/templates/Container'),
+      Container: () => import('../components/templates/Container'),
     },
     render(h) {
       return h('Container', {
@@ -375,7 +333,7 @@ export const renderTopic = element => {
   return {
     name: 'AnonymousTopic',
     components: {
-      Topic: () => import('@/components/templates/Topic'),
+      Topic: () => import('../components/templates/Topic'),
     },
     render(h) {
       return h('Topic', {
@@ -390,7 +348,7 @@ export const renderTopic = element => {
 export const renderBlockQuote = element => {
   return {
     components: {
-      BlockQuote: () => import('@/components/templates/BlockQuote'),
+      BlockQuote: () => import('../components/templates/BlockQuote'),
     },
     render(h) {
       return h('BlockQuote', {
@@ -405,7 +363,7 @@ export const renderBlockQuote = element => {
 export const renderComment = element => {
   return {
     components: {
-      Comment: () => import('@/components/templates/Comment'),
+      Comment: () => import('../components/templates/Comment'),
     },
     render(h) {
       return h('Comment', {

@@ -1,72 +1,73 @@
-import SphinxPage from '@/components/SphinxPage'
-import * as SphinxStore from '@/store/modules/sphinx'
+import SphinxPage from './components/SphinxPage'
+import * as SphinxStore from './store/modules/sphinx'
 
-import BlockQuote from '@/components/templates/BlockQuote'
-import BulletList from '@/components/templates/BulletList'
-import Caption from '@/components/templates/Caption'
-import Comment from '@/components/templates/Comment'
-import Compound from '@/components/templates/Compound'
-import Container from '@/components/templates/Container'
-import Document from '@/components/templates/Document'
-import DownloadReference from '@/components/templates/DownloadReference'
-import Emphasis from '@/components/templates/Emphasis'
-import EnumeratedList from '@/components/templates/EnumeratedList'
-import Figure from '@/components/templates/Figure'
-import Image from '@/components/templates/Image'
-import Inline from '@/components/templates/Inline'
-import ListItem from '@/components/templates/ListItem'
-import Literal from '@/components/templates/Literal'
-import LiteralBlock from '@/components/templates/LiteralBlock'
-import Math_ from '@/components/templates/Math'
-import MathBlock from '@/components/templates/MathBlock'
-import Paragraph from '@/components/templates/Paragraph'
-import Problematic from '@/components/templates/Problematic'
-import Reference from '@/components/templates/Reference'
-import Reusable from '@/components/templates/Reusable'
-import Section from '@/components/templates/Section'
-import Strong from '@/components/templates/Strong'
-import Title from '@/components/templates/Title'
-import TitleReference from '@/components/templates/TitleReference'
-import Topic from '@/components/templates/Topic'
-import Transition from '@/components/templates/Transition'
+import BlockQuote from './components/templates/BlockQuote'
+import Comment from './components/templates/Comment'
+import Compound from './components/templates/Compound'
+import Container from './components/templates/Container'
+import Document_ from './components/templates/Document'
+import DirectElementMap from './components/templates/DirectElementMap'
+import DownloadReference from './components/templates/DownloadReference'
+import Figure from './components/templates/Figure'
+import Footnote from './components/templates/Footnote'
+import FootnoteReference from './components/templates/FootnoteReference'
+import Image from './components/templates/Image'
+import LineBlock from './components/templates/LineBlock'
+import LineSingle from './components/templates/LineSingle'
+import Literal from './components/templates/Literal'
+import LiteralBlock from './components/templates/LiteralBlock'
+import Math_ from './components/templates/Math'
+import MathBlock from './components/templates/MathBlock'
+import NumberReference from './components/templates/NumberReference'
+import Problematic from './components/templates/Problematic'
+import Reference from './components/templates/Reference'
+import Section from './components/templates/Section'
+import Title from './components/templates/Title'
+import TodoNode from './components/templates/TodoNode'
+import Topic from './components/templates/Topic'
+import Transition from './components/templates/Transition'
+
+import VueHighlightJS from 'vue-highlightjs'
+import VueKatex from 'vue-katex'
+
+import 'highlight.js/styles/xcode.css'
+import 'katex/dist/katex.min.css'
 
 function install(Vue, options = {}) {
   if (!options.store) {
     throw 'Please provide a store!!'
   }
 
-  // Vue.component('your-component', yourComponent)
+  Vue.use(VueHighlightJS)
+  Vue.use(VueKatex)
 
   options.store.registerModule('sphinx', SphinxStore)
 }
 
 if (
   BlockQuote ||
-  BulletList ||
-  Caption ||
   Comment ||
   Compound ||
   Container ||
-  Document ||
+  DirectElementMap ||
+  Document_ ||
   DownloadReference ||
-  Emphasis ||
-  EnumeratedList ||
   Figure ||
+  Footnote ||
+  FootnoteReference ||
   Image ||
-  Inline ||
-  ListItem ||
+  LineSingle ||
+  LineBlock ||
   Literal ||
   LiteralBlock ||
   Math_ ||
   MathBlock ||
-  Paragraph ||
+  NumberReference ||
   Problematic ||
   Reference ||
-  Reusable ||
   Section ||
-  Strong ||
   Title ||
-  TitleReference ||
+  TodoNode ||
   Topic ||
   Transition
 ) {

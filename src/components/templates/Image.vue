@@ -1,8 +1,8 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import { sphinxChildren } from '@/mixins/SphinxChildren'
-import { determineRouteUrl } from '@/js/utilities'
+import { sphinxChildren } from '../../mixins/SphinxChildren'
+import { determineRouteUrl } from '../../js/utilities'
 
 export default {
   name: 'SphinxImage',
@@ -23,10 +23,15 @@ export default {
   },
   computed: {
     defineAttrs() {
-      return {
-        alt: this.element.getAttribute('alt'),
-        src: this.uri(),
-      }
+      const unrequiredAttrs = ['uri', 'ids', 'names', 'candidates']
+      let attrDict = {}
+      this.element.attributes.forEach(attr => {
+        if(!unrequiredAttrs.includes(attr.name)){
+          attrDict[attr.name] = attr.value
+        }
+      })
+      attrDict['src'] = this.uri()
+      return attrDict
     },
     ...mapGetters({
       getImagesURL: 'sphinx/getImagesURL',
@@ -54,5 +59,3 @@ export default {
   },
 }
 </script>
-
-<style scoped></style>

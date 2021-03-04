@@ -1,13 +1,13 @@
 <script>
-import { sphinxChildren } from '@/mixins/SphinxChildren'
+import { sphinxChildren } from '../../mixins/SphinxChildren'
 
 export default {
-  name: 'Caption',
+  name: 'LineSingle',
   mixins: [sphinxChildren],
   render(h) {
     return h(
-      'figcaption', // tag name
-      {},
+      'div', // tag name
+      this.dataObject(['line_single']),
       this.children.map(child => h(child)), // array of children
     )
   },
@@ -18,5 +18,3 @@ export default {
   },
 }
 </script>
-
-<style scoped></style>

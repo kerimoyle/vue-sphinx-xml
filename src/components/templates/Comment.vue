@@ -1,23 +1,18 @@
 <script>
-import { sphinxChildren } from '@/mixins/SphinxChildren'
+import { sphinxChildren } from '../../mixins/SphinxChildren'
 
 export default {
   name: 'Comment',
   mixins: [sphinxChildren],
-  render: function(h) {
-    return h(
-      'comment', // tag name
-      {}, // options
-      [
-        h(
-          'div',
-          {},
-          this.children.map(child => h(child)),
-        ),
-      ], // array of children
-    )
+  render(h) {
+    let comment = h('', {})
+    let text = ''
+    this.element.childNodes.forEach(node => {
+      text += node.nodeValue
+    })
+    comment.text = text
+    return comment
   },
-
   props: {
     element: {
       type: Element,

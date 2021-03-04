@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { decodeHTML } from '@/js/utilities'
+import { decodeHTML } from '../../js/utilities'
 
 export default {
   name: 'LiteralBlock',
@@ -28,5 +28,3 @@ export default {
   },
 }
 </script>
-
-<style scoped></style>

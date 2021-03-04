@@ -11,7 +11,7 @@
 import { baseReference } from '../../mixins/BaseReference'
 
 export default {
-  name: 'Reference',
+  name: 'NumberReference',
   mixins: [baseReference],
 }
 </script>

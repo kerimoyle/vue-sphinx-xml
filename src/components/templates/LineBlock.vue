@@ -1,15 +1,13 @@
 <script>
-import { sphinxChildren } from '@/mixins/SphinxChildren'
+import { sphinxChildren } from '../../mixins/SphinxChildren'
 
 export default {
-  name: 'Inline',
+  name: 'LineBlock',
   mixins: [sphinxChildren],
   render(h) {
     return h(
-      'span', // tag name
-      {
-        class: this.element.getAttribute('classes').split(' '),
-      },
+      'div', // tag name
+      this.dataObject(['line_block']),
       this.children.map(child => h(child)), // array of children
     )
   },
@@ -20,5 +18,3 @@ export default {
   },
 }
 </script>
-
-<style scoped></style>

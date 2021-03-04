@@ -1,15 +1,10 @@
 <template>
-  <vue-mathjax :formula="formula"> </vue-mathjax>
+  <katex-element :expression="formula"></katex-element>
 </template>
 
 <script>
-import { VueMathjax } from 'vue-mathjax'
-
 export default {
   name: 'Math',
-  components: {
-    'vue-mathjax': VueMathjax,
-  },
   props: {
     element: {
       type: Element,
@@ -18,11 +13,8 @@ export default {
 
   computed: {
     formula() {
-      let formula = this.element.textContent
-      return '$' + formula + '$'
+      return this.element.textContent
     },
   },
 }
 </script>
-
-<style scoped></style>
